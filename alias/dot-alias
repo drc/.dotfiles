@@ -1,0 +1,34 @@
+#! .alias
+
+alias flush-cache='sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;echo cache flushed'
+alias dev='cd ~/dev'
+alias server='python -m SimpleHTTPServer 8000'
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+alias config='/usr/local/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# change `cat` to `bat`
+alias cat='bat'
+export BAT_THEME="gruvbox-dark"
+
+# use `rg` over `grep`
+alias grep='rg'
+
+# using a knockoff iphone cable causes it to connect and disconnect 1000s of times, this disables it
+alias iphone='sudo killall -STOP -c usbd'
+
+# Turn on/off Headphone feature with a janky cable that controls the media 
+# https://apple.stackexchange.com/questions/394801/how-to-disable-inline-volume-controls-on-headphones-connected-to-mac
+alias headphonedriver='hidutil list | grep AppleMikeyHIDDriver'
+alias headphonekernel='kextstat | grep com.apple.driver.AppleMikeyHIDDriver'
+alias disableheadphones='sudo kextunload -b com.apple.driver.AppleMikeyHIDDriver'
+alias enableheadphones='sudo kextload -b com.apple.driver.AppleMikeyHIDDriver'
+
+# Start/stop zerotier cli
+alias stopzt="sudo launchctl unload /Library/LaunchDaemons/com.zerotier.one.plist"
+alias startzt="sudo launchctl load /Library/LaunchDaemons/com.zerotier.one.plist"
+
+weather() {
+  curl "wttr.in/$1?u&format=%l:+%c%f+%h+%o"
+}
+
+alias ls="exa"
