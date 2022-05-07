@@ -99,21 +99,26 @@ export PATH="/usr/local/sbin:$PATH"
 # use `bat` as manpage
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# Antigen Plugins
-source /usr/local/share/antigen/antigen.zsh
+export TERM="screen-256color"
 
-antigen use oh-my-zsh
+# clone antidote if necessary and generate a static plugin file
+zhome=${ZDOTDIR:-$HOME}
+if [[ ! $zhome/.zsh_plugins.zsh -nt $zhome/.zsh_plugins.txt ]]; then
+  [[ -e $zhome/.antidote ]] \
+    || git clone --depth=1 https://github.com/mattmc3/antidote.git $zhome/.antidote
+  [[ -e $zhome/.zsh_plugins.txt ]] || touch $zhome/.zsh_plugins.txt
+  (
+    source $zhome/.antidote/antidote.zsh
+    envsubst <$zhome/.zsh_plugins.txt | antidote bundle >$zhome/.zsh_plugins.zsh
+  )
+fi
 
-antigen bundle git
-antigen bundle brew
-antigen bundle macos 
+# uncomment if you want your session to have commands like `antidote update`
+autoload -Uz $zhome/.antidote/functions/antidote
 
-antigen bundle MichaelAquilina/zsh-you-should-use
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle lukechilds/zsh-nvm
-antigen bundle zsh-users/zsh-autosuggestions
-
-antigen apply
+# source static plugins file
+source $zhome/.zsh_plugins.zsh
+unset zhome
 
 # iTerm2
 source ~/.iterm2_shell_integration.zsh
@@ -128,11 +133,10 @@ if [ -f ~/.alias ]; then
   source ~/.alias
 fi
 
-# These slow down the start of a shell session, 
-# rather just leave them off and turn on when I need it
-#nvm use node
-#source /usr/local/opt/chruby/share/chruby/chruby.sh
-#source /usr/local/opt/chruby/share/chruby/auto.sh
-#chruby ruby-3.1.1
+if [[ $TERM_PROGRAM == "vscode" ]]; then
+  DISABLE_AUTO_TITLE="true"
+fi
+
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 eval "$(starship init zsh)"
