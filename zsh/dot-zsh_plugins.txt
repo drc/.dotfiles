@@ -8,6 +8,6 @@ $HOME/.oh-my-zsh/plugins/sudo
 # $HOME/.oh-my-zsh/plugins/ripgrep kind:zsh
 
 MichaelAquilina/zsh-you-should-use
-zsh-users/zsh-syntax-highlighting
 lukechilds/zsh-nvm
 zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting

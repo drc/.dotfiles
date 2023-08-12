@@ -22,6 +22,7 @@ alias headphonedriver='hidutil list | grep AppleMikeyHIDDriver'
 alias headphonekernel='kextstat | grep com.apple.driver.AppleMikeyHIDDriver'
 alias disableheadphones='sudo kextunload -b com.apple.driver.AppleMikeyHIDDriver'
 alias enableheadphones='sudo kextload -b com.apple.driver.AppleMikeyHIDDriver'
+alias touchbar="killall \"ControlStrip\""
 
 # Start/stop zerotier cli
 alias stopzt="sudo launchctl unload /Library/LaunchDaemons/com.zerotier.one.plist"
@@ -32,3 +33,11 @@ weather() {
 }
 
 alias ls="exa"
+alias youtube-dl="yt-dlp"
+
+alias proxmox="ssh root@10.0.1.10"
+alias pihole="ssh root@10.0.1.11"
+alias ipcamera="ssh root@10.0.1.12"
+alias containers="ssh root@10.0.1.15"
+alias jellyfin="ssh root@10.0.1.16"
+alias backup="ssh root@10.0.1.22"

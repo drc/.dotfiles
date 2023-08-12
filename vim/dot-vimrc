@@ -52,6 +52,7 @@ set nowrap
 
 " While searching though a file incrementally highlight matching characters as you type.
 set incsearch
+set hlsearch
 
 " Ignore capital letters during search.
 set ignorecase
