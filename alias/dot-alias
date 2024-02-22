@@ -2,7 +2,7 @@
 
 alias flush-cache='sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;echo cache flushed'
 alias dev='cd ~/dev'
-alias server='python -m SimpleHTTPServer 8000'
+alias server='python3 -m http.server'
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias config='/usr/local/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
@@ -32,12 +32,11 @@ weather() {
   curl "wttr.in/$1?u&format=%l:+%c%f+%h+%o"
 }
 
-alias ls="exa"
+alias ls="eza"
 alias youtube-dl="yt-dlp"
 
 alias proxmox="ssh root@10.0.1.10"
 alias pihole="ssh root@10.0.1.11"
-alias ipcamera="ssh root@10.0.1.12"
 alias containers="ssh root@10.0.1.15"
-alias jellyfin="ssh root@10.0.1.16"
 alias backup="ssh root@10.0.1.22"
+alias rocky="ssh root@10.0.1.27"

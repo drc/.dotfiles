@@ -156,7 +156,7 @@ fi
 # for brew curl
 export PATH="/usr/local/opt/curl/bin:$PATH"
 
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd=cd zsh)"
 
 export PATH="$PATH:/Applications/ServiceNow CLI/bin"
 export SPACESHIP_PROMPT_ASYNC=FALSE
@@ -166,7 +166,12 @@ export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 
 # export GOROOT="/Users/dancigrang/go"
+export GOROOT=
 # export GOPATH=$GOROOT/src
+export GOPATH=
 export GOBIN=/Users/dancigrang/go/bin
 export PATH=$PATH:$GOBIN
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+autoload -U compinit; compinit
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
